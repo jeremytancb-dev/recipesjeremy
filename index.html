@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe's Secret — Asian &amp; Mediterranean Home Cooking</title>
+<style>
+  :root {
+    --cream: #fbf2f7;
+    --cream-dark: #f3dcec;
+    --terracotta: #d6478f;
+    --terracotta-dark: #b13072;
+    --olive: #3f7cac;
+    --olive-dark: #2c5f87;
+    --brown: #2b2a40;
+    --brown-light: #666287;
+    --gold: #4fb3e8;
+    --white: #fffbfd;
+    --shadow: 0 8px 24px rgba(60, 40, 70, 0.14);
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--brown);
+    margin: 0 0 0.5em;
+  }
+
+  a { color: inherit; }
+
+  img, svg { max-width: 100%; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header / Nav */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 242, 247, 0.94);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--terracotta-dark);
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta), var(--gold));
+    flex-shrink: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--brown);
+    font-size: 0.95rem;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  nav a:hover {
+    color: var(--terracotta-dark);
+    border-bottom-color: var(--terracotta);
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--brown);
+    cursor: pointer;
+  }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(circle at 15% 25%, rgba(214, 71, 143, 0.16), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(63, 124, 172, 0.18), transparent 50%),
+      linear-gradient(160deg, var(--cream) 0%, var(--cream-dark) 100%);
+    padding: 90px 24px 70px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--olive);
+    color: var(--white);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    max-width: 720px;
+    margin: 0 auto 18px;
+  }
+
+  .hero p.lead {
+    max-width: 560px;
+    margin: 0 auto 34px;
+    color: var(--brown-light);
+    font-size: 1.1rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 0.98rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s, color 0.2s;
+    font-family: inherit;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--white);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--olive-dark);
+    border-color: var(--olive);
+  }
+  .btn-outline:hover { background: var(--olive); color: var(--white); }
+
+  /* Section shared */
+  section { padding: 80px 0; }
+
+  .section-head {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 48px;
+  }
+
+  .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+  .section-head p { color: var(--brown-light); }
+
+  .eyebrow {
+    display: block;
+    color: var(--terracotta-dark);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+
+  /* About */
+  .about {
+    background: var(--white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .about-art {
+    height: 280px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--olive) 0%, var(--gold) 55%, var(--terracotta) 100%);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-art::after {
+    content: "🍜  🫒  🥢  🍋";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    letter-spacing: 14px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+  }
+
+  .about-text p { margin-bottom: 16px; color: var(--brown-light); }
+
+  /* Recipes */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 42px;
+  }
+
+  .filter-btn {
+    background: var(--white);
+    border: 2px solid var(--cream-dark);
+    color: var(--brown);
+    padding: 9px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover { border-color: var(--terracotta); }
+
+  .filter-btn.active {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--white);
+  }
+
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .recipe-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(43, 42, 64, 0.18);
+  }
+
+  .recipe-card:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .recipe-photo {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .recipe-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recipe-tag {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .tag-asian { background: var(--olive); }
+  .tag-mediterranean { background: var(--terracotta); }
+
+  .recipe-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+
+  .recipe-desc {
+    color: var(--brown-light);
+    font-size: 0.92rem;
+    flex: 1;
+    margin-bottom: 14px;
+  }
+
+  .recipe-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--brown-light);
+    font-weight: 600;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--brown-light);
+    padding: 40px 0;
+    display: none;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 42, 64, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: var(--radius);
+    max-width: 620px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  .modal-photo {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.4rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    color: var(--brown);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .modal-close:hover { background: var(--white); }
+
+  .modal-content { padding: 26px 30px 34px; }
+
+  .modal-content h3 { font-size: 1.5rem; margin-bottom: 6px; }
+
+  .modal-meta {
+    display: flex;
+    gap: 16px;
+    color: var(--brown-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  .modal-content h4 {
+    font-size: 1rem;
+    color: var(--terracotta-dark);
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+
+  .modal-content ul, .modal-content ol {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--brown-light);
+  }
+
+  .modal-content li { margin-bottom: 6px; }
+
+  .visually-hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--olive);
+    color: var(--white);
+  }
+
+  .contact .section-head h2 { color: var(--white); }
+  .contact .section-head p { color: rgba(255,255,255,0.85); }
+  .contact .eyebrow { color: var(--gold); }
+
+  .contact-form {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contact-form input[type="email"] {
+    flex: 1;
+    min-width: 220px;
+    padding: 13px 18px;
+    border-radius: 999px;
+    border: none;
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+
+  .contact-form input[type="email"]:focus {
+    outline: 3px solid var(--gold);
+  }
+
+  .contact-form .btn-primary {
+    background: var(--terracotta);
+  }
+  .contact-form .btn-primary:hover { background: var(--terracotta-dark); }
+
+  .form-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    padding: 13px 24px;
+    max-width: 480px;
+    margin: 0 auto;
+    font-weight: 600;
+  }
+
+  .form-success.show { display: block; }
+
+  /* Footer */
+  footer {
+    background: var(--brown);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 34px 24px;
+    font-size: 0.88rem;
+  }
+
+  footer .brand {
+    color: var(--white);
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .recipe-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; }
+    nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--cream-dark);
+      display: none;
+    }
+    nav.open { display: block; }
+    nav ul {
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      gap: 14px;
+    }
+    .recipe-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    .hero { padding: 70px 20px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#home" class="brand"><span class="brand-mark"></span>Recipe's Secret</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <nav id="siteNav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <span class="hero-eyebrow">Asian &amp; Mediterranean Cooking</span>
+    <h1>The secret is in the spices, not the shortcuts.</h1>
+    <p class="lead">Recipe's Secret brings you tested, family-style recipes from two of the
+      world's most flavorful kitchens — from sizzling stir-fries to sun-drenched
+      Mediterranean mezze — made for real home cooks.</p>
+    <div class="hero-actions">
+      <a href="#recipes" class="btn btn-primary">Browse Recipes</a>
+      <a href="#about" class="btn btn-outline">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-art" aria-hidden="true"></div>
+    <div class="about-text">
+      <span class="eyebrow">About Us</span>
+      <h2>Two cuisines, one table</h2>
+      <p>Recipe's Secret started as a shared notebook between two friends — one
+        who grew up in a kitchen full of soy sauce and star anise, the other
+        raised on olive oil and oregano. We found that the two cuisines share
+        the same soul: fresh ingredients, bold aromatics, and recipes meant to
+        be cooked for people you love.</p>
+      <p>Every recipe on this site is tested in a home kitchen, written in
+        plain language, and built around ingredients you can actually find.
+        No fuss, no filler — just the secret to really good food.</p>
+    </div>
+  </div>
+</section>
+
+<section id="recipes">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Collection</span>
+      <h2>Recipes worth repeating</h2>
+      <p>A starting collection of Asian and Mediterranean favorites — filter by
+        cuisine or click any card for the full recipe.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Filter recipes by cuisine">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="asian">Asian</button>
+      <button class="filter-btn" data-filter="mediterranean">Mediterranean</button>
+    </div>
+
+    <div class="recipe-grid" id="recipeGrid"></div>
+    <p class="no-results" id="noResults">No recipes match this filter yet.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Stay In Touch</span>
+      <h2>Get new recipes in your inbox</h2>
+      <p>Join the list for a new Asian or Mediterranean recipe every couple of weeks. No spam, just good food.</p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <label for="contactEmail" class="visually-hidden">Email address</label>
+      <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+    <p class="form-success" id="formSuccess">Thanks for subscribing — welcome to Recipe's Secret! 🎉</p>
+    <p class="form-note">We respect your inbox. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><span class="brand-mark"></span>Recipe's Secret</div>
+  <p>&copy; <span id="year"></span> Recipe's Secret. All recipes made with love.</p>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-photo" id="modalPhoto"></div>
+    <button class="modal-close" id="modalClose" aria-label="Close recipe">&times;</button>
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <div class="modal-meta">
+        <span id="modalTime"></span>
+        <span id="modalCuisine"></span>
+      </div>
+      <p id="modalDesc"></p>
+      <h4>Ingredients</h4>
+      <ul id="modalIngredients"></ul>
+      <h4>Steps</h4>
+      <ol id="modalSteps"></ol>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Recipe data ----
+  var recipes = [
+    {
+      id: 'ginger-scallion-noodles',
+      title: 'Ginger Scallion Noodles',
+      cuisine: 'asian',
+      emoji: '🍜',
+      description: 'Silky wheat noodles tossed in a fragrant ginger-scallion oil with a splash of soy and sesame.',
+      time: '20 min',
+      ingredients: [
+        '8 oz fresh wheat noodles',
+        '4 scallions, thinly sliced',
+        '2 tbsp minced fresh ginger',
+        '3 tbsp neutral oil',
+        '2 tbsp soy sauce',
+        '1 tsp sesame oil',
+        '1 tsp sugar'
+      ],
+      steps: [
+        'Bring a pot of water to a boil and cook noodles according to package directions.',
+        'While noodles cook, place scallions and ginger in a heatproof bowl.',
+        'Heat neutral oil in a small pan until shimmering, then carefully pour over the scallions and ginger.',
+        'Stir in soy sauce, sesame oil, and sugar until combined.',
+        'Drain noodles, toss with the ginger-scallion sauce, and serve warm.'
+      ]
+    },
+    {
+      id: 'chicken-teriyaki-bowls',
+      title: 'Chicken Teriyaki Bowls',
+      cuisine: 'asian',
+      emoji: '🍚',
+      description: 'Glossy homemade teriyaki chicken served over steamed rice with quick-pickled cucumber.',
+      time: '35 min',
+      ingredients: [
+        '1.5 lb boneless chicken thighs',
+        '1/4 cup soy sauce',
+        '3 tbsp mirin',
+        '2 tbsp brown sugar',
+        '1 clove garlic, grated',
+        '2 cups steamed rice',
+        '1 Persian cucumber, sliced',
+        'Sesame seeds, for garnish'
+      ],
+      steps: [
+        'Whisk soy sauce, mirin, brown sugar, and garlic in a bowl to make the teriyaki sauce.',
+        'Sear chicken thighs in a hot pan, skin-side down, until golden, about 5 minutes per side.',
+        'Pour in the teriyaki sauce and simmer until thick and glossy, 5–7 minutes.',
+        'Slice chicken and serve over rice with pickled cucumber and sesame seeds.'
+      ]
+    },
+    {
+      id: 'thai-basil-stir-fry',
+      title: 'Thai Basil Stir-Fry (Pad Krapow)',
+      cuisine: 'asian',
+      emoji: '🌶️',
+      description: 'A fiery, fast weeknight stir-fry of ground pork, garlic, chilies, and fresh Thai basil.',
+      time: '20 min',
+      ingredients: [
+        '1 lb ground pork',
+        '4 cloves garlic, minced',
+        '2–3 Thai chilies, minced',
+        '2 tbsp oyster sauce',
+        '1 tbsp soy sauce',
+        '1 tsp fish sauce',
+        '1 cup Thai basil leaves',
+        '2 fried eggs, for serving'
+      ],
+      steps: [
+        'Heat oil in a wok over high heat and stir-fry garlic and chilies for 30 seconds.',
+        'Add ground pork and cook, breaking it apart, until browned.',
+        'Stir in oyster sauce, soy sauce, and fish sauce and cook 2 more minutes.',
+        'Remove from heat and fold in Thai basil leaves until wilted.',
+        'Serve over rice topped with a fried egg.'
+      ]
+    },
+    {
+      id: 'greek-lemon-chicken',
+      title: 'Greek Lemon Potato Chicken',
+      cuisine: 'mediterranean',
+      emoji: '🍋',
+      description: 'Roasted chicken and potatoes bathed in lemon, garlic, and oregano until golden and tender.',
+      time: '1 hr 10 min',
+      ingredients: [
+        '4 chicken thighs, bone-in',
+        '1.5 lb baby potatoes, halved',
+        '1/3 cup olive oil',
+        'Juice of 2 lemons',
+        '4 cloves garlic, minced',
+        '2 tsp dried oregano',
+        'Salt and pepper to taste'
+      ],
+      steps: [
+        'Preheat oven to 425°F (220°C).',
+        'Whisk olive oil, lemon juice, garlic, oregano, salt, and pepper together.',
+        'Toss chicken and potatoes in the marinade and arrange in a roasting pan.',
+        'Roast 45–55 minutes, basting once, until chicken is golden and potatoes are tender.',
+        'Rest 5 minutes before serving with pan juices spooned over top.'
+      ]
+    },
+    {
+      id: 'mediterranean-chickpea-salad',
+      title: 'Mediterranean Chickpea Salad',
+      cuisine: 'mediterranean',
+      emoji: '🥗',
+      description: 'A bright, no-cook salad of chickpeas, cucumber, tomato, feta, and a lemon-herb dressing.',
+      time: '15 min',
+      ingredients: [
+        '2 cans chickpeas, drained and rinsed',
+        '1 cucumber, diced',
+        '1 cup cherry tomatoes, halved',
+        '1/2 red onion, thinly sliced',
+        '2/3 cup crumbled feta',
+        '1/4 cup olive oil',
+        'Juice of 1 lemon',
+        '1 tsp dried oregano'
+      ],
+      steps: [
+        'Combine chickpeas, cucumber, tomatoes, red onion, and feta in a large bowl.',
+        'Whisk olive oil, lemon juice, oregano, salt, and pepper for the dressing.',
+        'Pour dressing over the salad and toss gently to combine.',
+        'Chill 10 minutes before serving for best flavor.'
+      ]
+    },
+    {
+      id: 'shakshuka',
+      title: 'Classic Shakshuka',
+      cuisine: 'mediterranean',
+      emoji: '🍳',
+      description: 'Eggs gently poached in a smoky, spiced tomato and pepper sauce — perfect with crusty bread.',
+      time: '30 min',
+      ingredients: [
+        '2 tbsp olive oil',
+        '1 onion, diced',
+        '1 red bell pepper, diced',
+        '3 cloves garlic, minced',
+        '1 tsp cumin',
+        '1 tsp smoked paprika',
+        '28 oz canned crushed tomatoes',
+        '4–5 eggs',
+        'Crusty bread, for serving'
+      ],
+      steps: [
+        'Heat olive oil in a large skillet and sauté onion and bell pepper until soft, about 6 minutes.',
+        'Add garlic, cumin, and smoked paprika and cook 1 minute until fragrant.',
+        'Pour in crushed tomatoes, season with salt and pepper, and simmer 10 minutes.',
+        'Make small wells in the sauce and crack in the eggs.',
+        'Cover and cook until egg whites are set but yolks are still soft, 6–8 minutes.',
+        'Serve straight from the pan with crusty bread.'
+      ]
+    }
+  ];
+
+  var cuisineLabels = { asian: 'Asian', mediterranean: 'Mediterranean' };
+  var activeFilter = 'all';
+
+  var recipeGrid = document.getElementById('recipeGrid');
+  var noResults = document.getElementById('noResults');
+
+  function getVisibleRecipes() {
+    if (activeFilter === 'all') return recipes;
+    return recipes.filter(function (r) { return r.cuisine === activeFilter; });
+  }
+
+  function renderRecipes() {
+    recipeGrid.innerHTML = '';
+    var visible = getVisibleRecipes();
+
+    visible.forEach(function (recipe) {
+      var card = document.createElement('button');
+      card.className = 'recipe-card';
+      card.type = 'button';
+      card.setAttribute('data-id', recipe.id);
+      card.setAttribute('aria-haspopup', 'dialog');
+
+      var photo = document.createElement('div');
+      photo.className = 'recipe-photo';
+      photo.style.background = 'linear-gradient(135deg, ' + cardGradient(recipe.cuisine) + ')';
+      photo.textContent = recipe.emoji;
+      card.appendChild(photo);
+
+      var body = document.createElement('div');
+      body.className = 'recipe-body';
+
+      var tag = document.createElement('span');
+      tag.className = 'recipe-tag tag-' + recipe.cuisine;
+      tag.textContent = cuisineLabels[recipe.cuisine];
+      body.appendChild(tag);
+
+      var title = document.createElement('h3');
+      title.textContent = recipe.title;
+      body.appendChild(title);
+
+      var desc = document.createElement('p');
+      desc.className = 'recipe-desc';
+      desc.textContent = recipe.description;
+      body.appendChild(desc);
+
+      var meta = document.createElement('div');
+      meta.className = 'recipe-meta';
+      meta.innerHTML = '<span>⏱ ' + recipe.time + '</span><span>View recipe →</span>';
+      body.appendChild(meta);
+
+      card.appendChild(body);
+      card.addEventListener('click', function () { openRecipeModal(recipe.id); });
+
+      recipeGrid.appendChild(card);
+    });
+
+    noResults.style.display = visible.length === 0 ? 'block' : 'none';
+  }
+
+  function cardGradient(cuisine) {
+    return cuisine === 'asian'
+      ? '#3f7cac, #4fb3e8'
+      : '#d6478f, #4fb3e8';
+  }
+
+  // ---- Filters ----
+  var filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activeFilter = btn.getAttribute('data-filter');
+      filterButtons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderRecipes();
+    });
+  });
+
+  // ---- Modal ----
+  var modalOverlay = document.getElementById('modalOverlay');
+  var modalPhoto = document.getElementById('modalPhoto');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalTime = document.getElementById('modalTime');
+  var modalCuisine = document.getElementById('modalCuisine');
+  var modalDesc = document.getElementById('modalDesc');
+  var modalIngredients = document.getElementById('modalIngredients');
+  var modalSteps = document.getElementById('modalSteps');
+  var modalClose = document.getElementById('modalClose');
+  var lastFocusedElement = null;
+
+  function openRecipeModal(id) {
+    var recipe = recipes.find(function (r) { return r.id === id; });
+    if (!recipe) return;
+
+    lastFocusedElement = document.activeElement;
+
+    modalPhoto.style.background = 'linear-gradient(135deg, ' + cardGradient(recipe.cuisine) + ')';
+    modalPhoto.textContent = recipe.emoji;
+    modalTitle.textContent = recipe.title;
+    modalTime.textContent = '⏱ ' + recipe.time;
+    modalCuisine.textContent = cuisineLabels[recipe.cuisine];
+    modalDesc.textContent = recipe.description;
+
+    modalIngredients.innerHTML = '';
+    recipe.ingredients.forEach(function (ing) {
+      var li = document.createElement('li');
+      li.textContent = ing;
+      modalIngredients.appendChild(li);
+    });
+
+    modalSteps.innerHTML = '';
+    recipe.steps.forEach(function (step) {
+      var li = document.createElement('li');
+      li.textContent = step;
+      modalSteps.appendChild(li);
+    });
+
+    modalOverlay.classList.add('open');
+    modalClose.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeRecipeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
+  modalClose.addEventListener('click', closeRecipeModal);
+  modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) closeRecipeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!modalOverlay.classList.contains('open')) return;
+
+    if (e.key === 'Escape') {
+      closeRecipeModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      var focusable = modalOverlay.querySelectorAll(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // ---- Mobile nav toggle ----
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  navToggle.addEventListener('click', function () {
+    var isOpen = siteNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  siteNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ---- Contact form ----
+  var contactForm = document.getElementById('contactForm');
+  var formSuccess = document.getElementById('formSuccess');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formSuccess.classList.add('show');
+    contactForm.reset();
+  });
+
+  renderRecipes();
+})();
+</script>
+
+</body>
+</html>
